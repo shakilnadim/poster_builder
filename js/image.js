@@ -1,4 +1,28 @@
 const posterImgPreview = document.getElementById("poster-img-preview");
+const dropzone = document.getElementById("dropzone");
+const imgInput = document.querySelector("input[type=file]");
+
+export function init() {
+  imgInput.addEventListener("change", (e) => {
+    previewPosterImage(e.target.files);
+  });
+
+  ["dragover", "dragend"].forEach((type) => {
+    dropzone.addEventListener(type, (e) => {
+      e.preventDefault();
+      addDraggingStyles(dropzone);
+    });
+  });
+
+  dropzone.addEventListener("dragleave", () => resetDraggingStyles(dropzone));
+
+  dropzone.addEventListener("drop", (e) => {
+    e.preventDefault();
+    resetDraggingStyles(dropzone);
+
+    previewPosterImage(e.dataTransfer.files);
+  });
+}
 
 export function resetDraggingStyles(element) {
   element.classList.add("border-dashed");

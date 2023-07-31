@@ -1,58 +1,12 @@
-import {
-  updateTitle,
-  updateTitleColor,
-  updateTitleAlignment,
-} from "./title.js";
+import { init as titleInit } from "./title.js";
+import { init as imageInit } from "./image.js";
+import { init as descriptionInit } from "./description.js";
+import { init as componentVisibilityInit } from "./componentVisibility.js";
 
-import {
-  resetDraggingStyles,
-  addDraggingStyles,
-  previewPosterImage,
-} from "./image.js";
-
-import { updatePostDescription } from "./description.js";
-
-const titleInput = document.getElementById("title-input");
-titleInput.addEventListener("keyup", (e) => updateTitle(titleInput.value));
-
-document
-  .querySelectorAll(".title-color")
-  .forEach((elem) =>
-    elem.addEventListener("click", () => updateTitleColor(elem.innerText))
-  );
-
-document
-  .querySelectorAll(".title-alignment")
-  .forEach((elem) =>
-    elem.addEventListener("click", () => updateTitleAlignment(elem.innerText))
-  );
-
-const dropzone = document.getElementById("dropzone");
-const imgInput = document.querySelector("input[type=file]");
-
-imgInput.addEventListener("change", (e) => {
-  previewPosterImage(e.target.files);
-});
-
-["dragover", "dragend"].forEach((type) => {
-  dropzone.addEventListener(type, (e) => {
-    e.preventDefault();
-    addDraggingStyles(dropzone);
-  });
-});
-
-dropzone.addEventListener("dragleave", () => resetDraggingStyles(dropzone));
-
-dropzone.addEventListener("drop", (e) => {
-  e.preventDefault();
-  resetDraggingStyles(dropzone);
-
-  previewPosterImage(e.dataTransfer.files);
-});
-
-document
-  .getElementById("description-input")
-  .addEventListener("keyup", (e) => updatePostDescription(e.target.value));
+componentVisibilityInit();
+titleInit();
+imageInit();
+descriptionInit();
 
 // drawCanvas();
 function drawCanvas() {

@@ -18,12 +18,13 @@
         </div>
 
         <!-- Heading -->
-        <div class="relative border rounded p-2 mt-10">
+        <div class="relative border rounded p-2 mt-10 hidden title-divs">
           <h4 class="absolute -top-4 px-2 rounded-full bg-slate-300">
             Heading
           </h4>
           <button
             class="absolute bg-white w-7 h-7 rounded-full flex justify-center items-center cursor-pointer -right-3.5 -top-3.5"
+            id="hide-heading"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -125,12 +126,13 @@
         </div>
 
         <!-- Poster Image -->
-        <div class="relative border rounded p-2 mt-10">
+        <div class="relative border rounded p-2 mt-10 hidden image-divs">
           <h4 class="absolute -top-4 px-2 rounded-full bg-slate-300">
             Poster Image
           </h4>
           <button
             class="absolute bg-white w-7 h-7 rounded-full flex justify-center items-center cursor-pointer -right-3.5 -top-3.5"
+            id="hide-image"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -180,12 +182,13 @@
         </div>
 
         <!-- Description -->
-        <div class="relative border rounded p-2 mt-10">
+        <div class="relative border rounded p-2 mt-10 hidden description-divs">
           <h4 class="absolute -top-4 px-2 rounded-full bg-slate-300">
             Description
           </h4>
           <button
             class="absolute bg-white w-7 h-7 rounded-full flex justify-center items-center cursor-pointer -right-3.5 -top-3.5"
+            id="hide-description"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -212,16 +215,19 @@
         <div class="mt-2 grid grid-cols-3 gap-3 font-semibold">
           <button
             class="bg-yellow-200 hover:bg-yellow-400 transition text-yellow-600 rounded p-2 cursor-pointer shadow"
+            id="title-button"
           >
             Heading
           </button>
           <button
             class="bg-emerald-200 hover:bg-emerald-400 transition text-emerald-600 rounded p-2 cursor-pointer shadow"
+            id="image-button"
           >
             Image
           </button>
           <button
             class="bg-blue-200 hover:bg-blue-400 transition text-blue-600 rounded p-2 cursor-pointer shadow"
+            id="description-button"
           >
             Description
           </button>
@@ -238,13 +244,18 @@
         </div>
 
         <div id="poster-container">
-          <div class="mt-10">
+          <div class="mt-10 hidden title-divs">
             <h2 class="text-4xl" id="poster-title"></h2>
           </div>
 
-          <img id="poster-img-preview" class="mt-4" src="" alt="" />
+          <img
+            id="poster-img-preview"
+            class="mt-4 hidden image-divs"
+            src=""
+            alt=""
+          />
 
-          <p id="poster-description" class="mt-4"></p>
+          <p id="poster-description" class="mt-4 hidden description-divs"></p>
         </div>
       </div>
     </div>
