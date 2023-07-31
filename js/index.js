@@ -10,6 +10,8 @@ import {
   previewPosterImage,
 } from "./image.js";
 
+import { updatePostDescription } from "./description.js";
+
 const titleInput = document.getElementById("title-input");
 titleInput.addEventListener("keyup", (e) => updateTitle(titleInput.value));
 
@@ -47,6 +49,10 @@ dropzone.addEventListener("drop", (e) => {
 
   previewPosterImage(e.dataTransfer.files);
 });
+
+document
+  .getElementById("description-input")
+  .addEventListener("keyup", (e) => updatePostDescription(e.target.value));
 
 // drawCanvas();
 function drawCanvas() {
