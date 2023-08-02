@@ -15,11 +15,6 @@ let xPad = 10;
 export function init() {
   document.getElementById("download-btn").addEventListener("click", () => {
     posterImgPreview = getImgElem();
-    console.log(
-      getTitle().trim() == "",
-      getDescription().trim() == "",
-      posterImgPreview === null || posterImgPreview.src.endsWith("/index.html")
-    );
     if (
       getTitle().trim() == "" &&
       getDescription().trim() == "" &&
@@ -96,7 +91,13 @@ function drawDescription(context, canvasWidth) {
   context.fillStyle = "#030712";
   context.font = "16px sans-serif";
   context.textAlign = "left";
-  wrapText(context, getDescription(), xPad, canvasWidth - xPad * 2, 24);
+
+  getDescription()
+    .split("\n")
+    .forEach((line) => {
+      wrapText(context, line, xPad, canvasWidth - xPad * 2, 24);
+      yPos += 24;
+    });
 }
 
 function wrapText(context, text, x, maxWidth, lineHeight) {
