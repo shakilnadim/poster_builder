@@ -77,3 +77,15 @@ function hideDescriptionSections() {
   descriptionButton.classList.remove("hidden");
   isDescriptionVisible = false;
 }
+
+export function getIsTitleVisible() {
+  return isTitleVisible;
+}
+
+export function getIsImageVisible() {
+  return isImageVisible;
+}
+
+export function getIsDescriptionVisible() {
+  return isDescriptionVisible;
+}

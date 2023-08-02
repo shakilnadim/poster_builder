@@ -11,3 +11,7 @@ export function updatePostDescription(value) {
   posterDescription = value;
   posterDescriptionElem.innerText = posterDescription;
 }
+
+export function getDescription() {
+  return posterDescription;
+}

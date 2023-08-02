@@ -1,11 +1,11 @@
-let title = "";
-let titleColor = "";
-let titleAlignment = "";
 const titleColorList = {
   blue: "#2563eb",
   green: "#16a34a",
   black: "#030712",
 };
+let title = "";
+let titleColor = titleColorList.black;
+let titleAlignment = "";
 
 const titlePreview = document.getElementById("poster-title");
 const titleInput = document.getElementById("title-input");
