@@ -1,11 +1,11 @@
 import {
+  getTitle,
+  getTitleAlignment,
+  getTitleColor,
   getIsTitleVisible,
-  getIsImageVisible,
-  getIsDescriptionVisible,
-} from "./componentVisibility.js";
-import { getTitle, getTitleAlignment, getTitleColor } from "./title.js";
-import { getImgElem } from "./image.js";
-import { getDescription } from "./description.js";
+} from "./title.js";
+import { getImgElem, getIsImageVisible } from "./image.js";
+import { getDescription, getIsDescriptionVisible } from "./description.js";
 
 const posterContainer = document.getElementById("poster-container");
 let posterImgPreview = getImgElem();
@@ -14,11 +14,17 @@ let xPad = 10;
 
 export function init() {
   document.getElementById("download-btn").addEventListener("click", () => {
-    console.log(getTitle().trim() == "", getDescription().trim() == "");
+    posterImgPreview = getImgElem();
+    console.log(
+      getTitle().trim() == "",
+      getDescription().trim() == "",
+      posterImgPreview === null || posterImgPreview.src.endsWith("/index.html")
+    );
     if (
       getTitle().trim() == "" &&
       getDescription().trim() == "" &&
-      posterImgPreview.src.endsWith("/index.html")
+      (posterImgPreview === null ||
+        posterImgPreview.src.endsWith("/index.html"))
     ) {
       alert("Poster is empty");
       return;
@@ -75,7 +81,6 @@ function drawTitle(context, canvasWidth) {
 }
 
 function drawImage(context, canvasWidth) {
-  console.log(posterImgPreview);
   context.drawImage(
     posterImgPreview,
     xPad,

@@ -9,7 +9,11 @@ let titleAlignment = "";
 
 const titlePreview = document.getElementById("poster-title");
 const titleInput = document.getElementById("title-input");
-titleInput.addEventListener("keyup", (e) => updateTitle(titleInput.value));
+
+const titleButton = document.getElementById("title-button");
+const titleSections = document.querySelectorAll(".title-divs");
+const hideHeadingButton = document.getElementById("hide-heading");
+let isTitleVisible = false;
 
 export function init() {
   document
@@ -23,25 +27,48 @@ export function init() {
     .forEach((elem) =>
       elem.addEventListener("click", () => updateTitleAlignment(elem.innerText))
     );
+
+  titleButton.addEventListener("click", showTitleSections);
+  hideHeadingButton.addEventListener("click", hideTitleSections);
+
+  titleInput.addEventListener("keyup", (e) => updateTitle(titleInput.value));
 }
 
-export function updateTitle(input) {
+function updateTitle(input) {
   title = input;
   titlePreview.innerText = title;
 }
 
-export function updateTitleColor(color) {
+function updateTitleColor(color) {
   titleColor = titleColorList[color.toLowerCase()];
   titlePreview.style.color = titleColor;
 }
 
-export function updateTitleAlignment(alignment) {
+function updateTitleAlignment(alignment) {
   titleAlignment = alignment.toLowerCase();
   titlePreview.style.textAlign = titleAlignment;
 }
 
+function showTitleSections() {
+  titleSections.forEach((section) => {
+    section.classList.remove("hidden");
+  });
+
+  titleButton.classList.add("hidden");
+  isTitleVisible = true;
+}
+
+function hideTitleSections() {
+  titleSections.forEach((section) => {
+    section.classList.add("hidden");
+  });
+
+  titleButton.classList.remove("hidden");
+  isTitleVisible = false;
+}
+
 export function getTitle() {
-  return title;
+  return isTitleVisible ? title : "";
 }
 
 export function getTitleColor() {
@@ -49,5 +76,9 @@ export function getTitleColor() {
 }
 
 export function getTitleAlignment() {
-  return titleAlignment;
+  return isTitleVisible ? titleAlignment : "";
+}
+
+export function getIsTitleVisible() {
+  return isTitleVisible;
 }
